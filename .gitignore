@@ -1,0 +1,18 @@
+# build output
+RepoLines.app/
+*.app/
+dist/
+
+# development screenshots and logs
+shot*.png
+screenshot*.png
+*.log
+
+# signing material (the identity lives in the keychain, not the repo)
+rl_*.pem
+rl_*.p12
+rl_openssl.cnf
+
+# editor and OS
+.DS_Store
+.claude-backups/
