@@ -390,12 +390,11 @@ final class WidgetController: NSObject {
         if let d = UserDefaults.standard.data(forKey: "repos"),
            let arr = try? JSONDecoder().decode([Repo].self, from: d) { repos = arr }
         active = UserDefaults.standard.integer(forKey: "activeRepo")
-        if repos.isEmpty {
-            let old = UserDefaults.standard.string(forKey: "repoPath")
-            let fb = "/Users/wilbelmont/Documents/Mephisto"
-            if let old, FileManager.default.fileExists(atPath: old) { repos = [Repo(path: old, name: nil, logo: nil)] }
-            else if FileManager.default.fileExists(atPath: fb) { repos = [Repo(path: fb, name: nil, logo: nil)] }
+        if repos.isEmpty, let old = UserDefaults.standard.string(forKey: "repoPath"),
+           FileManager.default.fileExists(atPath: old) {
+            repos = [Repo(path: old, name: nil, logo: nil)]   // migrate an older single-repo setting
         }
+        // no repos yet -> the widget shows an "add a repo" state on first launch
         if !repos.indices.contains(active) { active = 0 }
     }
     func saveRepos() {
