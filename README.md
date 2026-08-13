@@ -75,6 +75,10 @@ Signing" if one is present in your keychain. Signing with a stable identity
 keeps the Screen Recording permission from resetting on every rebuild. Without
 that identity the build still works; it is signed ad-hoc instead.
 
+## Author
+
+Made by will.be. https://willbe.dev
+
 ## License
 
 MIT. See LICENSE.
